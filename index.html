@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Appa ❤️</title>
+
+<style>
+body{
+margin:0;
+font-family:'Segoe UI',sans-serif;
+background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+color:white;
+text-align:center;
+}
+
+/* Title */
+h1{
+color:#FFD700;
+margin-top:20px;
+font-size:42px;
+text-shadow:0 0 15px gold;
+}
+
+/* Message */
+.message{
+font-size:22px;
+margin:20px;
+color:#e0f7ff;
+}
+
+/* Verse */
+.verse{
+margin:30px auto;
+padding:20px;
+width:80%;
+background:rgba(255,215,0,0.1);
+border-radius:15px;
+color:#FFD700;
+font-size:20px;
+}
+
+/* 3D Gallery */
+.gallery-container{
+width:100%;
+height:600px;
+display:flex;
+justify-content:center;
+align-items:center;
+perspective:2000px;
+margin-top:40px;
+}
+
+.gallery3d{
+position:relative;
+width:260px;
+height:340px;
+transform-style:preserve-3d;
+animation:spin 25s linear infinite;
+}
+
+.gallery3d:hover{
+animation-play-state:paused;
+}
+
+.gallery3d img{
+position:absolute;
+width:260px;
+height:340px;
+object-fit:cover;
+border-radius:20px;
+border:3px solid rgba(255,255,255,0.2);
+box-shadow:0 10px 30px rgba(0,0,0,0.6);
+transition:0.5s;
+}
+
+.gallery3d img:hover{
+transform:scale(1.1) !important;
+z-index:999;
+}
+
+@keyframes spin{
+from{ transform:rotateY(0deg); }
+to{ transform:rotateY(360deg); }
+}
+
+/* Button */
+button{
+margin-top:20px;
+padding:12px 25px;
+border:none;
+background:#FFD700;
+border-radius:25px;
+font-size:18px;
+cursor:pointer;
+}
+
+button:hover{
+transform:scale(1.1);
+}
+
+/* Popup */
+.popup{
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%) scale(0);
+background:white;
+color:black;
+padding:30px;
+border-radius:15px;
+transition:0.4s;
+}
+
+.popup.show{
+transform:translate(-50%,-50%) scale(1);
+}
+</style>
+</head>
+
+<body>
+
+<h1>🎂 இனிய பிறந்தநாள் வாழ்த்துகள் அப்பா ❤️</h1>
+
+<div class="message">
+என் வாழ்க்கையின் ஹீரோ ❤️<br>
+உங்கள் அன்பும் வழிகாட்டுதலும் என் வாழ்வின் ஆசீர்வாதம் 🙏
+</div>
+
+<div class="verse">
+📖 சங்கீதம் 20:4 <br><br>
+"உன் இருதயத்தின் விருப்பத்தை உனக்கு அருளி,
+உன் ஆலோசனைகளையெல்லாம் நிறைவேற்றுவாராக."
+</div>
+
+<!-- 3D ROTATING GALLERY -->
+<div class="gallery-container">
+<div class="gallery3d">
+
+<img src="photo1.jpeg">
+<img src="photo2.jpeg">
+<img src="photo3.jpeg">
+<img src="photo4.jpg">
+<img src="photo5.jpg">
+<img src="photo6.jpg">
+<img src="photo7.jpg">
+<img src="photo8.jpeg">
+
+</div>
+</div>
+
+<!-- Button -->
+<button onclick="showSurprise()">🎁 Click to Surprise</button>
+
+<!-- Popup -->
+<div id="popup" class="popup">
+❤️ Happy Birthday Appa ❤️ <br><br>
+Love you always 💖
+</div>
+
+<!-- Music -->
+<audio autoplay loop>
+<source src="birthday.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+/* 3D POSITIONING */
+function setupGallery(){
+const gallery=document.querySelector(".gallery3d");
+const images=gallery.querySelectorAll("img");
+const total=images.length;
+const radius=500;
+
+images.forEach((img,i)=>{
+const angle=(i*360)/total;
+img.style.transform=`rotateY(${angle}deg) translateZ(${radius}px)`;
+});
+}
+
+window.onload=setupGallery;
+
+/* Popup */
+function showSurprise(){
+let popup=document.getElementById("popup");
+popup.classList.add("show");
+
+setTimeout(()=>{
+popup.classList.remove("show");
+},4000);
+}
+
+</script>
+
+</body>
+</html>
